@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -jar $PATH_TO_JAR co.edu.uniquindio.proyecto.WebApplication
+web: java -jar web/build/libs/web-0.0.1-SNAPSHOT.jar
