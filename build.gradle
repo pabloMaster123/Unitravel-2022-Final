@@ -31,6 +31,17 @@ subprojects {
         compileOnly 'com.fasterxml.jackson.core:jackson-annotations'
     }
 }
+
+bootJar{
+    enabled = false
+}
+
+jar{
+    enabled = true
+}
+
 test {
     useJUnitPlatform()
 }
+
+task stage(dependsOn: ['build', 'clean'])
