@@ -11,6 +11,7 @@ configurations {
 
 allprojects {
     group = 'co.edu.uniquindio.ingesis'
+    version = '0.0.1-SNAPSHOT'
     sourceCompatibility = '11'
     repositories {
         mavenCentral()
@@ -21,6 +22,7 @@ subprojects {
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
     apply plugin: 'java'
+    
     dependencies {
         compileOnly 'org.projectlombok:lombok'
         annotationProcessor 'org.projectlombok:lombok'
@@ -38,9 +40,3 @@ bootJar{
 jar{
     enabled = true
 }
-
-test {
-    useJUnitPlatform()
-}
-
-task stage(dependsOn: ['build', 'clean'])
