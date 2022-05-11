@@ -12,6 +12,38 @@
 <ui:define name="content">
 
     <h1>#{inicioBean.mensaje}</h1>
+    <h1>#{seguridadBean.administrador}</h1>
+    <h1>#{seguridadBean.administradorHotel}</h1>
+    <h1>#{seguridadBean.cliente}</h1>
+
+
+
+
+    <p:commandButton styleClass="ui-button-raised ui-button-warning" icon="pi pi-user"
+                     iconPos="left" value="Login" onclick="PF('login').show()"
+                     rendered="#{!seguridadBean.autenticado}" />
+
+    <p:commandButton styleClass="ui-button-raised ui-button-warning" icon="pi pi-user"
+                     iconPos="left" value="Cerrar Sesion" action="#{seguridadBean.cerrarSesion}"
+                     rendered="#{seguridadBean.autenticado}" />
+
+    <p:dialog header="Iniciar sesión" showEffect="fade" widgetVar="login" modal="true"
+              rendered="#{!seguridadBean.autenticado}" >
+        <h:form >
+            <h:panelGrid columns="3" cellpadding="5">
+                <p:outputLabel for="email_login" value="Email:" />
+                <p:inputText id="email_login" value="#{seguridadBean.email}" required="true" />
+                <p:message for="email_login" />
+                <p:outputLabel for="password_login" value="Password:" />
+                <p:password id="password_login" value="#{seguridadBean.password}" required="true"
+                />
+                <p:message for="password_login" />
+            </h:panelGrid>
+            <p:commandButton value="Iniciar Sesión" action="#{seguridadBean.iniciarSesion}"
+                             styleClass="mt-4" update="@form" icon="pi pi-sign-in" iconPos="left" />
+            <p:growl for="login-bean" showDetail="true" />
+        </h:form>
+    </p:dialog>
 
 </ui:define>
 </ui:composition>

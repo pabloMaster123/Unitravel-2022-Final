@@ -12,4 +12,6 @@ public interface AdministradorRepo extends JpaRepository<Administrador, String> 
 
     Optional<Administrador> findByEmailAndPassword(String email, String password);
 
+    Optional<Administrador> findByEmail(String email);
+
 }
