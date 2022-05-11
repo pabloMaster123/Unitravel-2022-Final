@@ -13,6 +13,6 @@ import java.io.Serializable;
 @Setter
 public class InicioBean implements Serializable {
 
-    private String mensaje = "Mi segunda pagina en SFJ" ;
+    private String mensaje = "Sustentación Software 3" ;
 
 }
