@@ -78,7 +78,6 @@ public class SeguridadBean implements Serializable {
 
     public void iniciarUsuario(int tipo){
         try{
-            autenticado = true;
             switch(tipo){
                 case 1:
                     administrador = administradorServicio.login(email, password);
@@ -93,6 +92,7 @@ public class SeguridadBean implements Serializable {
                     autenticadoCliente = true;
                     break;
             }
+            autenticado = true;
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -102,6 +102,10 @@ public class SeguridadBean implements Serializable {
     public String cerrarSesion() {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         return "/index?faces-redirect=true";
+    }
+
+    public String redireccionarParaGestionarCuenta(String cedula) {
+        return "GestionarCuenta.xhtml?faces-redirect=true&amp;cedula="+cedula;
     }
 
 }

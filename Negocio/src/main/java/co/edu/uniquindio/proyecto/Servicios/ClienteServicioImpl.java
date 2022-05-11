@@ -48,7 +48,7 @@ public class ClienteServicioImpl implements ClienteServicio {
     }
 
     @Override
-    public Cliente actualizarCliente(String cedula, String nombre, String email, String password, Ciudad ciudad) throws Exception {
+    public Cliente actualizarCliente(String cedula, String nombre, String email, String password, Ciudad ciudad, List<String> telefonos) throws Exception {
         Optional<Cliente> buscar = clienteRepo.findById(cedula);
 
         if (buscar.isEmpty()){
@@ -71,8 +71,24 @@ public class ClienteServicioImpl implements ClienteServicio {
         clienteActualizar.setEmail(email);
         clienteActualizar.setPassword(password);
         clienteActualizar.setCiudad(ciudad);
+        clienteActualizar.setTelefono(telefonos);
 
         return clienteRepo.save(clienteActualizar);
+    }
+
+    @Override
+    public void actualizarTelefonos(String cedula, List<String> telefonos) throws Exception{
+        if(clienteRepo.findById(cedula).isPresent()){
+            if(!telefonos.isEmpty()){
+                Cliente aux = clienteRepo.getById(cedula);
+                aux.setTelefono(telefonos);
+                clienteRepo.save(aux);
+            } else{
+                throw new Exception("El listado de numeros a actualizar esta vacio.");
+            }
+        } else {
+            throw new Exception("No existe la cedula indicada en la base de datos.");
+        }
     }
 
     @Override

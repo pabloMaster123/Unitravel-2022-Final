@@ -12,7 +12,9 @@ public interface ClienteServicio {
 
     Cliente registrarCliente (String cedula, String nombre, String email, String password, Ciudad ciudad, List<String> telefonos) throws Exception;
 
-    Cliente actualizarCliente (String cedula, String nombre, String email, String password, Ciudad ciudad) throws Exception;
+    Cliente actualizarCliente (String cedula, String nombre, String email, String password, Ciudad ciudad, List<String> telefonos) throws Exception;
+
+    public void actualizarTelefonos(String cedula, List<String> telefonos) throws Exception;
 
     boolean eliminarClientePorCedula (String cedula) throws Exception;
 
