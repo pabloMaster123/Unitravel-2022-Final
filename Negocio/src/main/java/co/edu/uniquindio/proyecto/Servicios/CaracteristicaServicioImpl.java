@@ -79,7 +79,7 @@ public class CaracteristicaServicioImpl implements CaracteristicaServicio {
     }
 
     @Override
-    public List<Caracteristica> listar() throws Exception {
+    public List<Caracteristica> listar() {
         return caracteristicaRepo.findAll();
     }
 }

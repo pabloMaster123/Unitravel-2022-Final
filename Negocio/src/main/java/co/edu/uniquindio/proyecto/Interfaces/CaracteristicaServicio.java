@@ -18,5 +18,5 @@ public interface CaracteristicaServicio {
 
     List<Caracteristica> buscarCaracteristicasPorContenido (String contenido) throws Exception;
 
-    List<Caracteristica> listar() throws Exception;
+    List<Caracteristica> listar();
 }

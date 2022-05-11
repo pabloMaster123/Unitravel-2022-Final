@@ -1,7 +1,7 @@
 package co.edu.uniquindio.proyecto.bean;
 
-import co.edu.uniquindio.proyecto.Entidades.Ciudad;
-import co.edu.uniquindio.proyecto.Interfaces.CiudadServicio;
+import co.edu.uniquindio.proyecto.Entidades.Caracteristica;
+import co.edu.uniquindio.proyecto.Interfaces.CaracteristicaServicio;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,35 +18,35 @@ import java.util.List;
 @ViewScoped
 @Getter
 @Setter
-public class ActualizarCiudadBean implements Serializable {
+public class ActualizarCaracteristicaBean implements Serializable  {
 
     @Autowired
-    private CiudadServicio ciudadServicio;
+    private CaracteristicaServicio caracteristicaServicio;
 
-    private Ciudad ciudad;
+    private Caracteristica caracteristica;
 
-    private String nombre;
+    private String contenido;
 
     @Value("#{param['codigo']}")
     private Integer codigo;
 
-    private List<Ciudad> ciudades;
+    private List<Caracteristica> caracteristicas;
 
     @PostConstruct
     public void inicializar(){
-        this.ciudades = new ArrayList<Ciudad>();
+        this.caracteristicas = new ArrayList<Caracteristica>();
         try{
-            this.ciudad = ciudadServicio.obtenerCuidad(codigo);
+            this.caracteristica = caracteristicaServicio.buscarCaracteristica(codigo);
         }catch(Exception e){
             e.printStackTrace();
         }
-        this.ciudades.add(ciudad);
+        this.caracteristicas.add(caracteristica);
     }
 
     public String actualizar(){
         try{
-            ciudadServicio.actualizarCiudad(ciudad.getCodigo(), nombre);
-            return "GestionarCiudad.xhtml?faces-redirect=true";
+            caracteristicaServicio.actualizarCaracteristica(caracteristica.getCodigo(), contenido);
+            return "GestionarCaracteristica.xhtml?faces-redirect=true";
         }catch(Exception e){
             e.printStackTrace();
         }

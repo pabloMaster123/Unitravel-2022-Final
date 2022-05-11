@@ -7,7 +7,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <ui:composition template="WEB-INF/template.xhtml">
-    <ui:define name="title">Registrar Cliente</ui:define>
+    <ui:define name="title">Gestionar Ciudad</ui:define>
 
     <ui:define name="content">
         <style type="text/css">
@@ -45,7 +45,7 @@
 
                     <p:outputPanel>
 
-                        <p:dataView value="#{ciudadBean.ciudades}" var="ciudad" >
+                        <p:dataView value="#{ciudadBean.ciudades}" var="caracteristica" >
                             <f:facet name="header">
                                 Listado de ciudades
                             </f:facet>
@@ -55,16 +55,16 @@
                                         <p:outputPanel>
                                             <h:panelGrid columns="2" cellpadding="5">
                                                 <h:outputText value="Nombre:"/>
-                                                <h:outputText value="#{ciudad.nombre}" style="font-weight:bold"/>
+                                                <h:outputText value="#{caracteristica.nombre}" style="font-weight:bold"/>
                                             </h:panelGrid>
                                         </p:outputPanel>
                                     </div>
                                     <div class="col-lg-2 col-md-1 align-self-center">
                                         <p:panelGrid columns="2" cellpadding="5">
                                             <p:commandButton value="Eliminar" styleClass="ui-button-raised" iconPos="right"
-                                                             action="#{ciudadBean.eliminar(ciudad.codigo)}"/>
+                                                             action="#{ciudadBean.eliminar(caracteristica.codigo)}"/>
                                             <p:commandButton value="Actualizar" styleClass="ui-button-raised" iconPos="right"
-                                                             action="#{ciudadBean.llevarParaActualizar(ciudad.codigo)}"/>
+                                                             action="#{ciudadBean.llevarParaActualizar(caracteristica.codigo)}"/>
                                         </p:panelGrid>
                                     </div>
                                 </div>
