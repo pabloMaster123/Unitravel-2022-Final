@@ -33,21 +33,21 @@
                     <p:outputLabel value="Silla" for="silla_r"/>
                     <p:selectOneMenu id="silla_r" value="#{clienteBean.ciudad}" converter="#{ciudadConverter}">
                         <f:selectItem itemLabel="Seleccione la ciudad en la que vive" noSelectionOption="true"/>
-                        <f:selectItems var="cliente" itemLabel="#{cliente.nombre}"
+                        <f:selectItems var="caracteristica" itemLabel="#{caracteristica.nombre}"
                                        value="#{clienteBean.ciudades}"/>
                     </p:selectOneMenu>
 
                     <p:outputLabel value="Habitacion" for="habitacion_r"/>
                     <p:selectOneMenu id="habitacion_r" value="#{clienteBean.ciudad}" converter="#{ciudadConverter}">
                         <f:selectItem itemLabel="Seleccione la ciudad en la que vive" noSelectionOption="true"/>
-                        <f:selectItems var="ciudad" itemLabel="#{cliente.nombre}"
+                        <f:selectItems var="ciudad" itemLabel="#{caracteristica.nombre}"
                                        value="#{clienteBean.ciudades}"/>
                     </p:selectOneMenu>
 
                     <p:outputLabel value="Cliente" for="cliente_r"/>
                     <p:selectOneMenu id="cliente_r" value="#{clienteBean.ciudad}" converter="#{ciudadConverter}">
                         <f:selectItem itemLabel="Seleccione la ciudad en la que vive" noSelectionOption="true"/>
-                        <f:selectItems var="ciudad" itemLabel="#{cliente.nombre}"
+                        <f:selectItems var="ciudad" itemLabel="#{caracteristica.nombre}"
                                        value="#{clienteBean.ciudades}"/>
                     </p:selectOneMenu>
 

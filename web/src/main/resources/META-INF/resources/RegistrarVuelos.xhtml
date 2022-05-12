@@ -22,14 +22,14 @@
                 <p:outputLabel value="Origen:" for="ciudad_o"/>
                 <p:selectOneMenu id="ciudad_o" value="#{vueloBean.ciudadOrigen}" converter="#{ciudadConverter}">
                     <f:selectItem itemLabel="Seleccione una ciudad" noSelectionOption="true"/>
-                    <f:selectItems var="cliente" itemLabel="#{cliente.nombre}"
+                    <f:selectItems var="caracteristica" itemLabel="#{caracteristica.nombre}"
                                    value="#{vueloBean.ciudades}"/>
                 </p:selectOneMenu>
 
                 <p:outputLabel value="Destino:" for="ciudad_d"/>
                 <p:selectOneMenu id="ciudad_d" value="#{vueloBean.ciudadDestino}" converter="#{ciudadConverter}">
                     <f:selectItem itemLabel="Seleccione una ciudad" noSelectionOption="true"/>
-                    <f:selectItems var="ciudad" itemLabel="#{cliente.nombre}"
+                    <f:selectItems var="ciudad" itemLabel="#{caracteristica.nombre}"
                                    value="#{vueloBean.ciudades}"/>
                 </p:selectOneMenu>
 

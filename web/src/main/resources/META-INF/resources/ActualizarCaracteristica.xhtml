@@ -11,14 +11,14 @@
 
     <ui:define name="content">
         <h:form>
-            <p:dataView value="#{actualizarCaracteristicaBean.caracteristicas}" var="cliente" >
+            <p:dataView value="#{actualizarCaracteristicaBean.caracteristicas}" var="caracteristica" >
                 <p:dataViewListItem>
                     <div class="row d-flex item-pro">
                         <div class="col-lg-8 col-md-1 align-self-center">
                             <p:outputPanel>
                                 <h:panelGrid columns="2" cellpadding="5">
                                     <h:outputLabel value="Contenido Caracteristica:" for="contenido" style="font-weight:bold"/>
-                                    <h:outputText id="contenido" value="#{cliente.contenido}" />
+                                    <h:outputText id="contenido" value="#{caracteristica.contenido}" />
                                     <h:outputLabel value="Contenido Nuevo:" for="contenidoNuevo" style="font-weight:bold"/>
                                     <h:inputText id="contenidoNuevo" value="#{actualizarCaracteristicaBean.contenido}"/>
                                 </h:panelGrid>
