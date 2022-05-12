@@ -11,14 +11,14 @@
 
     <ui:define name="content">
         <h:form>
-            <p:dataView value="#{actualizarCiudadBean.ciudades}" var="cliente" >
+            <p:dataView value="#{actualizarCiudadBean.ciudades}" var="ciudad" >
                 <p:dataViewListItem>
                     <div class="row d-flex item-pro">
                         <div class="col-lg-8 col-md-1 align-self-center">
                             <p:outputPanel>
                                 <h:panelGrid columns="2" cellpadding="5">
                                     <h:outputLabel value="Nombre Ciudad:" for="nombre" style="font-weight:bold"/>
-                                    <h:outputText id="nombre" value="#{cliente.nombre}" />
+                                    <h:outputText id="nombre" value="#{ciudad.nombre}" />
                                     <h:outputLabel value="Nombre Nuevo:" for="nombreNuevo" style="font-weight:bold"/>
                                     <h:inputText id="nombreNuevo" value="#{actualizarCiudadBean.nombre}"/>
                                 </h:panelGrid>

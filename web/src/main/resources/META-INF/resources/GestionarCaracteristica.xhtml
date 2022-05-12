@@ -45,7 +45,7 @@
 
                 <p:outputPanel>
 
-                    <p:dataView value="#{caracteristicaBean.caracteristicas}" var="caracteristica">
+                    <p:dataView value="#{caracteristicaBean.caracteristicas}" var="ciudad">
                         <f:facet name="header">
                             Listado de caracteristicas
                         </f:facet>
@@ -55,16 +55,16 @@
                                     <p:outputPanel>
                                         <h:panelGrid columns="2" cellpadding="5">
                                             <h:outputText value="Contenido:"/>
-                                            <h:outputText value="#{caracteristica.contenido}" style="font-weight:bold"/>
+                                            <h:outputText value="#{ciudad.contenido}" style="font-weight:bold"/>
                                         </h:panelGrid>
                                     </p:outputPanel>
                                 </div>
                                 <div class="col-lg-2 col-md-1 align-self-center">
                                     <p:panelGrid columns="2" cellpadding="5">
                                         <p:commandButton value="Eliminar" styleClass="ui-button-raised" iconPos="right"
-                                                         action="#{caracteristicaBean.eliminar(caracteristica.codigo)}"/>
+                                                         action="#{caracteristicaBean.eliminar(ciudad.codigo)}"/>
                                         <p:commandButton value="Actualizar" styleClass="ui-button-raised" iconPos="right"
-                                                         action="#{caracteristicaBean.llevarParaActualizar(caracteristica.codigo)}"/>
+                                                         action="#{caracteristicaBean.llevarParaActualizar(ciudad.codigo)}"/>
                                     </p:panelGrid>
                                 </div>
                             </div>
