@@ -18,7 +18,7 @@ public class InicioBean implements Serializable {
 
     private String mensaje = "Sustentación Software 3" ;
 
-    @Autowired
+/*    @Autowired
     private AdministradorServicio administradorServicio;
 
     @PostConstruct
@@ -29,6 +29,6 @@ public class InicioBean implements Serializable {
              e.printStackTrace();
          }
 
-    }
+    }*/
 
 }
