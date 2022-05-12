@@ -25,7 +25,7 @@
                 <p:outputLabel value="Ciudad Hotel:" for="Ciudad_H"/>
                 <p:selectOneMenu id="Ciudad_H" value="#{hotelBean.ciudadHotel}" converter="#{ciudadConverter}">
                     <f:selectItem itemLabel="Seleccione una ciudad" noSelectionOption="true"/>
-                    <f:selectItems var="ciudad" itemLabel="#{ciudad.nombre}"
+                    <f:selectItems var="caracteristica" itemLabel="#{caracteristica.nombre}"
                                    value="#{hotelBean.ciudades}"/>
                 </p:selectOneMenu>
 

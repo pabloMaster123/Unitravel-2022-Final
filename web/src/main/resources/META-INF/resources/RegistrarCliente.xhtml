@@ -29,7 +29,7 @@
                 <p:outputLabel value="Ciudad" for="ciudad_c"/>
                 <p:selectOneMenu id="ciudad_c" value="#{registrarClienteBean.ciudad}" converter="#{ciudadConverter}">
                     <f:selectItem itemLabel="Seleccione la ciudad en la que vive" noSelectionOption="true"/>
-                    <f:selectItems var="ciudad" itemLabel="#{ciudad.nombre}"
+                    <f:selectItems var="caracteristica" itemLabel="#{caracteristica.nombre}"
                                    value="#{registrarClienteBean.ciudades}"/>
                 </p:selectOneMenu>
 
