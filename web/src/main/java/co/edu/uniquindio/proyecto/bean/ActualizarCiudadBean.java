@@ -46,7 +46,7 @@ public class ActualizarCiudadBean implements Serializable {
     public String actualizar(){
         try{
             ciudadServicio.actualizarCiudad(ciudad.getCodigo(), nombre);
-            return "GestionarCiudad.xhtml?faces-redirect=true";
+            return "/administrador/GestionarCiudad.xhtml?faces-redirect=true";
         }catch(Exception e){
             e.printStackTrace();
         }

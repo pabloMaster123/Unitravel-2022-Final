@@ -62,7 +62,7 @@ public class GestionarCuentaBean implements Serializable {
         try{
             if(!nombreNuevo.isEmpty() && !emailNuevo.isEmpty() && !passwordNueva.isEmpty() && ciudadNueva != null){
                 clienteServicio.actualizarCliente(cedula, nombreNuevo, emailNuevo, passwordNueva, ciudadNueva, cliente.getTelefono());
-                return "GestionarCuenta.xhtml?faces-redirect=true&amp;cedula="+cedula;
+                return "/cliente/GestionarCuenta.xhtml?faces-redirect=true&amp;cedula="+cedula;
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -75,7 +75,7 @@ public class GestionarCuentaBean implements Serializable {
             System.out.println(numero);
             this.telefonos.remove(numero);
             clienteServicio.actualizarTelefonos(cedula, telefonos);
-            return "GestionarCuenta.xhtml?faces-redirect=true&amp;cedula="+cedula;
+            return "/cliente/GestionarCuenta.xhtml?faces-redirect=true&amp;cedula="+cedula;
         }catch(Exception e){
             e.printStackTrace();
         }

@@ -42,7 +42,7 @@ public class CaracteristicaBean implements Serializable {
             caracteristicaServicio.agregarCaracteristica(contenido);
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "alerta", "Caracteristica agregada");
             FacesContext.getCurrentInstance().addMessage("msj-bean", msg);
-            return "GestionarCaracteristica.xhtml?faces-redirect=true";
+            return "/administrador/GestionarCaracteristica.xhtml?faces-redirect=true";
         }catch (Exception e){
             e.printStackTrace();
             e.printStackTrace();
@@ -55,7 +55,7 @@ public class CaracteristicaBean implements Serializable {
     public String eliminar(Integer id){
         try{
             caracteristicaServicio.eliminarCaracteristica(id);
-            return "GestionarCaracteristica.xhtml?faces-redirect=true";
+            return "/administrador/GestionarCaracteristica.xhtml?faces-redirect=true";
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -63,7 +63,7 @@ public class CaracteristicaBean implements Serializable {
     }
 
     public String llevarParaActualizar(Integer caracteristicaCodigo){
-        return "ActualizarCaracteristica.xhtml?faces-redirect=true&amp;codigo="+caracteristicaCodigo;
+        return "/administrador/ActualizarCaracteristica.xhtml?faces-redirect=true&amp;codigo="+caracteristicaCodigo;
     }
 
     public void buscarCaracteristica(){

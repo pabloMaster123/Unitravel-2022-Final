@@ -52,7 +52,7 @@ public class CiudadBean implements Serializable {
             ciudadServicio.agregarCiudad(nombre);
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Alerta", "Registro Exitoso!");
             FacesContext.getCurrentInstance().addMessage("msj-bean", msg);
-            return "GestionarCiudad.xhtml?faces-redirect=true";
+            return "/administrador/GestionarCiudad.xhtml?faces-redirect=true";
         }catch(Exception e){
             e.printStackTrace();
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"alerta", e.getMessage());
@@ -62,7 +62,7 @@ public class CiudadBean implements Serializable {
     }
 
     public String llevarParaActualizar(Integer ciudadCodigo){
-        return "ActualizarCiudad.xhtml?faces-redirect=true&amp;codigo="+ciudadCodigo;
+        return "/administrador/ActualizarCiudad.xhtml?faces-redirect=true&amp;codigo="+ciudadCodigo;
     }
 
     public void buscarCiudad(){

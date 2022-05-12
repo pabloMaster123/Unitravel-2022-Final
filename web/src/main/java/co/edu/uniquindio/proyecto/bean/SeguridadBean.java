@@ -100,12 +100,16 @@ public class SeguridadBean implements Serializable {
     }
 
     public String cerrarSesion() {
+        autenticado = false;
+        autenticadoAdmin = false;
+        autenticadoAdminHotel = false;
+        autenticadoAdminHotel = false;
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         return "/index?faces-redirect=true";
     }
 
     public String redireccionarParaGestionarCuenta(String cedula) {
-        return "GestionarCuenta.xhtml?faces-redirect=true&amp;cedula="+cedula;
+        return "/cliente/GestionarCuenta.xhtml?faces-redirect=true&amp;cedula="+cedula;
     }
 
 }

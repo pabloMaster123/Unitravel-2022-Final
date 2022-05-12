@@ -46,7 +46,7 @@ public class ActualizarCaracteristicaBean implements Serializable  {
     public String actualizar(){
         try{
             caracteristicaServicio.actualizarCaracteristica(caracteristica.getCodigo(), contenido);
-            return "GestionarCaracteristica.xhtml?faces-redirect=true";
+            return "/administrador/GestionarCaracteristica.xhtml?faces-redirect=true";
         }catch(Exception e){
             e.printStackTrace();
         }
