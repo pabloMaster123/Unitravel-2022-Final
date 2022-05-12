@@ -23,58 +23,58 @@
         </style>
         <h:form>
 
-                <div>
-                    <p:panelGrid columns="2" cellpadding="5" id="panelAgregarCiudad">
-                        <p:outputLabel value="Nombre:" for="nombreNuevaCiudad" style="font-weight:bold"/>
-                        <p:inputText id="nombreNuevaCiudad" value="#{ciudadBean.nombre}"/>
-                    </p:panelGrid>
-                    <p:commandButton value="Agregar Ciudad" action="#{ciudadBean.agregar()}" update="@form" for="panelAgregarCiudad"/>
-                </div>
-                <p:panelGrid columns="2" cellpadding="50" layout="flex">
-
-                    <p:outputPanel>
-                        <div align="right">
-                            <p:panelGrid columns="1" cellpadding="5" id="panelBuscar">
-                                <p:inputText id="ciudadParaBuscar" placeholder="Ingrese una ciudad" value="#{ciudadBean.buscar}"/>
-                            </p:panelGrid>
-                            <p:commandButton value="Buscar Ciudad" action="#{ciudadBean.buscarCiudad}" update="@form" for="panelBuscar"/>
-
-                        </div>
-
-                    </p:outputPanel>
-
-                    <p:outputPanel>
-
-                        <p:dataView value="#{ciudadBean.ciudades}" var="cliente" >
-                            <f:facet name="header">
-                                Listado de ciudades
-                            </f:facet>
-                            <p:dataViewListItem>
-                                <div class="row item-pro" align="center">
-                                    <div class="col-lg-8 col-md-1 align-self-center">
-                                        <p:outputPanel>
-                                            <h:panelGrid columns="2" cellpadding="5">
-                                                <h:outputText value="Nombre:"/>
-                                                <h:outputText value="#{cliente.nombre}" style="font-weight:bold"/>
-                                            </h:panelGrid>
-                                        </p:outputPanel>
-                                    </div>
-                                    <div class="col-lg-2 col-md-1 align-self-center">
-                                        <p:panelGrid columns="2" cellpadding="5">
-                                            <p:commandButton value="Eliminar" styleClass="ui-button-raised" iconPos="right"
-                                                             action="#{ciudadBean.eliminar(cliente.codigo)}"/>
-                                            <p:commandButton value="Actualizar" styleClass="ui-button-raised" iconPos="right"
-                                                             action="#{ciudadBean.llevarParaActualizar(cliente.codigo)}"/>
-                                        </p:panelGrid>
-                                    </div>
-                                </div>
-                            </p:dataViewListItem>
-                        </p:dataView>
-
-                    </p:outputPanel>
-
-
+            <div>
+                <p:panelGrid columns="2" cellpadding="5" id="panelAgregarCiudad">
+                    <p:outputLabel value="Nombre:" for="nombreNuevaCiudad" style="font-weight:bold"/>
+                    <p:inputText id="nombreNuevaCiudad" value="#{ciudadBean.nombre}"/>
                 </p:panelGrid>
+                <p:commandButton value="Agregar Ciudad" action="#{ciudadBean.agregar()}" update="@form" for="panelAgregarCiudad"/>
+            </div>
+            <p:panelGrid columns="2" cellpadding="50" layout="flex">
+
+                <p:outputPanel>
+                    <div align="right">
+                        <p:panelGrid columns="1" cellpadding="5" id="panelBuscar">
+                            <p:inputText id="ciudadParaBuscar" placeholder="Ingrese una ciudad" value="#{ciudadBean.buscar}"/>
+                        </p:panelGrid>
+                        <p:commandButton value="Buscar Ciudad" action="#{ciudadBean.buscarCiudad()}" update="@form" for="panelBuscar"/>
+
+                    </div>
+
+                </p:outputPanel>
+
+                <p:outputPanel>
+
+                    <p:dataView value="#{ciudadBean.ciudades}" var="caracteristica">
+                        <f:facet name="header">
+                            Listado de ciudades
+                        </f:facet>
+                        <p:dataViewListItem>
+                            <div class="row item-pro" align="center">
+                                <div class="col-lg-8 col-md-1 align-self-center">
+                                    <p:outputPanel>
+                                        <h:panelGrid columns="2" cellpadding="5">
+                                            <h:outputText value="Nombre:"/>
+                                            <h:outputText value="#{caracteristica.nombre}" style="font-weight:bold"/>
+                                        </h:panelGrid>
+                                    </p:outputPanel>
+                                </div>
+                                <div class="col-lg-2 col-md-1 align-self-center">
+                                    <p:panelGrid columns="2" cellpadding="5">
+                                        <p:commandButton value="Eliminar" styleClass="ui-button-raised" iconPos="right"
+                                                         action="#{ciudadBean.eliminar(caracteristica.codigo)}"/>
+                                        <p:commandButton value="Actualizar" styleClass="ui-button-raised" iconPos="right"
+                                                         action="#{ciudadBean.llevarParaActualizar(caracteristica.codigo)}"/>
+                                    </p:panelGrid>
+                                </div>
+                            </div>
+                        </p:dataViewListItem>
+                    </p:dataView>
+
+                </p:outputPanel>
+
+
+            </p:panelGrid>
 
 
         </h:form>
