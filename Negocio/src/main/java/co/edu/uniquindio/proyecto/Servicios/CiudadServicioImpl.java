@@ -78,7 +78,7 @@ public class CiudadServicioImpl implements CiudadServicio {
 
     @Override
     public List<Ciudad> buscarCiudad(String nombre) throws Exception {
-        return ciudadRepo.listarPorNombre(nombre);
+        return ciudadRepo.listarPorNombre(nombre.toUpperCase());
     }
 
     @Override
