@@ -41,7 +41,7 @@ public class Ciudad implements Serializable {
     @ToString.Exclude
     private List<Vuelo> vuelos2;
 
-    @OneToMany(mappedBy = "ciudad")
+    @OneToMany(mappedBy = "ciudad", cascade = CascadeType.ALL)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @ToString.Exclude
     private List<Cliente> clientes;
