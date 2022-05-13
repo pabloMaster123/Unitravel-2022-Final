@@ -50,8 +50,8 @@ public class CiudadBean implements Serializable {
     public String agregar(){
         try{
             ciudadServicio.agregarCiudad(nombre);
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Alerta", "Registro Exitoso!");
-            FacesContext.getCurrentInstance().addMessage("msj-bean", msg);
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Felicitaciones", "Registro Exitoso!");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
             return "/administrador/GestionarCiudad.xhtml?faces-redirect=true";
         }catch(Exception e){
             e.printStackTrace();
