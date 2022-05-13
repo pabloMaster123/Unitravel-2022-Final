@@ -100,4 +100,16 @@ public class VueloServicioImpl implements VueloServicio {
         return vueloRepo.findAll();
     }
 
+    @Override
+    public List<Vuelo> listarVuelosDisponibles() {
+        List<Vuelo> vuelos = vueloRepo.findAll();
+        List<Vuelo> vuelosDisponibles = new ArrayList<Vuelo>();
+
+        for(int i = 0; i < vuelos.size(); i++){
+            if(vuelos.get(i).getCantidadDeSillas() == vuelos.get(i).getSillas().size()){
+                vuelosDisponibles.add(vuelos.get(i));
+            }
+        }
+        return vuelosDisponibles;
+    }
 }

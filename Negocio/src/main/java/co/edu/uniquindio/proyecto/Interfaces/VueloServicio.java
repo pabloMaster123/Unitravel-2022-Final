@@ -26,4 +26,6 @@ public interface VueloServicio {
 
     List<Vuelo> listar();
 
+    List<Vuelo> listarVuelosDisponibles();
+
 }
