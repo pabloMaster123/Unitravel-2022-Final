@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -54,7 +56,8 @@ public class GestionarCuentaBean implements Serializable {
             cliente = clienteServicio.buscarClientePorCedula(cedula);
             telefonos = cliente.getTelefono();
         }catch(Exception e){
-            e.printStackTrace();
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"alerta", e.getMessage());
+            FacesContext.getCurrentInstance().addMessage("msj-bean", msg);
         }
     }
 
@@ -65,7 +68,8 @@ public class GestionarCuentaBean implements Serializable {
                 return "/cliente/GestionarCuenta.xhtml?faces-redirect=true&amp;cedula="+cedula;
             }
         }catch(Exception e){
-            e.printStackTrace();
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"alerta", e.getMessage());
+            FacesContext.getCurrentInstance().addMessage("msj-bean", msg);
         }
         return null;
     }
@@ -77,7 +81,8 @@ public class GestionarCuentaBean implements Serializable {
             clienteServicio.actualizarTelefonos(cedula, telefonos);
             return "/cliente/GestionarCuenta.xhtml?faces-redirect=true&amp;cedula="+cedula;
         }catch(Exception e){
-            e.printStackTrace();
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"alerta", e.getMessage());
+            FacesContext.getCurrentInstance().addMessage("msj-bean", msg);
         }
         return null;
     }

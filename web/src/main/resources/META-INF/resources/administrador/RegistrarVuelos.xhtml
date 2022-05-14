@@ -11,6 +11,11 @@
 
     <ui:define name="content">
         <h:form>
+
+            <p:messages id="messages" showDetail="true" closable="true">
+                <p:autoUpdate/>
+            </p:messages>
+
             <h:panelGrid columns="2" cellpadding="5">
 
                 <p:outputLabel value="Cantidad de sillas:" for="cantidad_sillas"/>
@@ -20,21 +25,21 @@
                 <p:datePicker id="fecha_p" value="#{vueloBean.fecha}" required="true"/>
 
                 <p:outputLabel value="Origen:" for="ciudad_o"/>
-                <p:selectOneMenu id="ciudad_o" value="#{vueloBean.ciudadOrigen}" converter="#{ciudadConverter}">
+                <p:selectOneMenu id="ciudad_o" value="#{vueloBean.ciudadOrigen}" converter="#{ciudadConverter}" required="true">
                     <f:selectItem itemLabel="Seleccione una ciudad" noSelectionOption="true"/>
                     <f:selectItems var="caracteristica" itemLabel="#{caracteristica.nombre}"
                                    value="#{vueloBean.ciudades}"/>
                 </p:selectOneMenu>
 
                 <p:outputLabel value="Destino:" for="ciudad_d"/>
-                <p:selectOneMenu id="ciudad_d" value="#{vueloBean.ciudadDestino}" converter="#{ciudadConverter}">
+                <p:selectOneMenu id="ciudad_d" value="#{vueloBean.ciudadDestino}" converter="#{ciudadConverter}" required="true">
                     <f:selectItem itemLabel="Seleccione una ciudad" noSelectionOption="true"/>
                     <f:selectItems var="caracteristica" itemLabel="#{caracteristica.nombre}"
                                    value="#{vueloBean.ciudades}"/>
                 </p:selectOneMenu>
 
             </h:panelGrid>
-            <p:commandButton value="Registrar Clientes" action="#{vueloBean.registrarVuelo}" update="@form"/>
+            <p:commandButton value="Registrar Vuelo" action="#{vueloBean.registrarVuelo}" update="@form"/>
         </h:form>
     </ui:define>
 </ui:composition>

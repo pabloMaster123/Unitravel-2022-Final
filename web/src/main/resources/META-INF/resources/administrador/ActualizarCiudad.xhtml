@@ -11,6 +11,11 @@
 
     <ui:define name="content">
         <h:form>
+
+            <p:messages id="messages" showDetail="true" closable="true">
+                <p:autoUpdate/>
+            </p:messages>
+
             <p:dataView value="#{actualizarCiudadBean.ciudades}" var="caracteristica" >
                 <p:dataViewListItem>
                     <div class="row d-flex item-pro">

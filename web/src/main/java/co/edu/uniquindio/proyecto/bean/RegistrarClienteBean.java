@@ -77,7 +77,8 @@ public class RegistrarClienteBean implements Serializable {
             } else{
                 for (int i = 0; i < telefonos.size(); i++) {
                     if(numero.equalsIgnoreCase(telefonos.get(i))){
-                        System.out.println("ERROR: Ya existe ese numero en el listado!");
+                        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Alerta", "ERROR: El numero ya existe en la base de datos");
+                        FacesContext.getCurrentInstance().addMessage("msj-bean", msg);
                         centinela2 = true;
                         break;
                     }
@@ -100,15 +101,18 @@ public class RegistrarClienteBean implements Serializable {
                 }
                 if(centinela == false) {
                     if(existenciaDeNumeroEnBD){
-                        System.out.println("ERROR: El numero ya existe en la base de datos");
+                        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Alerta", "ERROR: El numero ya existe en la base de datos");
+                        FacesContext.getCurrentInstance().addMessage("msj-bean", msg);
                     } else{
                         return true;
                     }
                 } else {
-                    System.out.println("ERROR: Lo ingresado no es un numero!");
+                    FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Alerta", "ERROR: Lo ingresado no es un numero!");
+                    FacesContext.getCurrentInstance().addMessage("msj-bean", msg);
                 }
             } else {
-                System.out.println("ERROR: No ha escrito nada en el campo.");
+                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Alerta", "ERROR: No ha escrito nada en el campo.");
+                FacesContext.getCurrentInstance().addMessage("msj-bean", msg);
             }
         return false;
     }

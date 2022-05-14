@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -48,7 +50,8 @@ public class ActualizarCiudadBean implements Serializable {
             ciudadServicio.actualizarCiudad(ciudad.getCodigo(), nombre);
             return "/administrador/GestionarCiudad.xhtml?faces-redirect=true";
         }catch(Exception e){
-            e.printStackTrace();
+            FacesMessage msg1 = new FacesMessage(FacesMessage.SEVERITY_ERROR, "alerta", e.getMessage());
+            FacesContext.getCurrentInstance().addMessage("msj-bean", msg1);
         }
         return null;
     }

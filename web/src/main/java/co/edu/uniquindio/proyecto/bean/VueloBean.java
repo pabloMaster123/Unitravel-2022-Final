@@ -47,7 +47,8 @@ public class VueloBean implements Serializable {
     public void registrarVuelo(){
         try {
             vueloServicio.agregarVuelo(ciudadOrigen,ciudadDestino,cantidadSillas,fecha);
-
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Alerta", "Registro Exitoso!");
+            FacesContext.getCurrentInstance().addMessage("msj-bean", msg);
         }catch (Exception e){
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"alerta", e.getMessage());
             FacesContext.getCurrentInstance().addMessage("msj-bean", msg);

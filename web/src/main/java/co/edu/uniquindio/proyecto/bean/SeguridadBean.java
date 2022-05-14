@@ -15,6 +15,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import java.io.Serializable;
@@ -71,7 +72,8 @@ public class SeguridadBean implements Serializable {
                 return "index?faces-redirect=true";
             }
         }catch(Exception e){
-            e.printStackTrace();
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"alerta", e.getMessage());
+            FacesContext.getCurrentInstance().addMessage("msj-bean", msg);
         }
         return null;
     }

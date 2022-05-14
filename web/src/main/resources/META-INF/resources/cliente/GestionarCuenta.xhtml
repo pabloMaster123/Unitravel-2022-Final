@@ -10,6 +10,19 @@
     <ui:define name="title">Gestionar Cuenta</ui:define>
 
     <ui:define name="content">
+
+        <style type="text/css">
+
+            dataView{
+                align-content: center;
+            }
+
+            .ui-dataview .ui-dataview-header .ui-dataview-layout-options{
+                visibility: hidden;
+            }
+
+        </style>
+
         <h:form>
             <p:dataView value="#{gestionarCuentaBean.cliente}" var="caracteristica">
                 <p:dataViewListItem>
@@ -58,7 +71,7 @@
             </p:dialog>
             <p:outputPanel>
 
-                <p:dataView value="#{gestionarCuentaBean.telefonos}" var="telefono" >
+                <p:dataView value="#{gestionarCuentaBean.telefonos}" var="telefono"  rows="10" paginator="true" rowsPerPageTemplate="10,15,20">
                     <f:facet name="header">
                         Listado de telefonos
                     </f:facet>

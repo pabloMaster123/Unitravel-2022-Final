@@ -49,7 +49,7 @@
 
                 <p:outputPanel>
 
-                    <p:dataView value="#{ciudadBean.ciudades}" var="ciudad">
+                    <p:dataView value="#{ciudadBean.ciudades}" var="ciudad" rows="10" paginator="true" rowsPerPageTemplate="10,15,20">
                         <f:facet name="header">
                             Listado de ciudades
                         </f:facet>

@@ -42,7 +42,8 @@ public class CiudadBean implements Serializable {
             ciudadServicio.eliminarCiudad(id);
             return "GestionarCiudad.xhtml?faces-redirect=true";
         }catch(Exception e){
-            e.printStackTrace();
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"alerta", e.getMessage());
+            FacesContext.getCurrentInstance().addMessage("msj-bean", msg);
         }
         return null;
     }
@@ -50,8 +51,6 @@ public class CiudadBean implements Serializable {
     public String agregar(){
         try{
             ciudadServicio.agregarCiudad(nombre);
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Felicitaciones", "Registro Exitoso!");
-            FacesContext.getCurrentInstance().addMessage(null, msg);
             return "/administrador/GestionarCiudad.xhtml?faces-redirect=true";
         }catch(Exception e){
             e.printStackTrace();
@@ -69,7 +68,8 @@ public class CiudadBean implements Serializable {
         try{
             ciudades = ciudadServicio.buscarCiudad(buscar);
         }catch (Exception e){
-            e.printStackTrace();
+            FacesMessage msg1 = new FacesMessage(FacesMessage.SEVERITY_ERROR, "alerta", e.getMessage());
+            FacesContext.getCurrentInstance().addMessage("msj-bean", msg1);
         }
     }
 

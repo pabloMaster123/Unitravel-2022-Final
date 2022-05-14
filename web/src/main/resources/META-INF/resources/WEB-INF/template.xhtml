@@ -82,19 +82,22 @@
 
                 <div class="text-end">
                     <h:form rendered="#{!seguridadBean.autenticado}">
-                        <p:commandButton value="Login" styleClass="btn btn-primary me-2" onclick="PF('login').show()" icon="pi pi-sign-in" />
+                        <p:commandButton value="Login" styleClass="btn btn-primary me-2" onclick="PF('login').show()" icon="pi pi-sign-in"/>
                         <p:commandButton value="Registrase" styleClass="btn btn-primary"
                                          action="RegistrarCliente.xhtml?faces-redirect=true" icon="pi pi-user-plus"/>
                     </h:form>
+
                 </div>
                 <div class="text-end">
+
+                    <h:form rendered="#{seguridadBean.autenticadoCliente}">
+                        <p:commandButton value="Gestionar Cuenta" styleClass="btn btn-primary me-2"
+                                         action="#{seguridadBean.redireccionarParaGestionarCuenta(seguridadBean.cliente.cedula)}"/>
+                    </h:form>
+
                     <h:form rendered="#{seguridadBean.autenticado}">
                         <p:commandButton value="Cerrar Sesion" styleClass="btn btn-primary"
                                          action="#{seguridadBean.cerrarSesion}"/>
-                    </h:form>
-                    <h:form rendered="#{seguridadBean.autenticadoCliente}">
-                        <p:commandButton value="Gestionar Cuenta" styleClass="btn btn-primary"
-                                         action="#{seguridadBean.redireccionarParaGestionarCuenta(seguridadBean.cliente.cedula)}"/>
                     </h:form>
                 </div>
             </div>

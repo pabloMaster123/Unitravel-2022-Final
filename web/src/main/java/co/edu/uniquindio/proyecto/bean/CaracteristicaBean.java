@@ -37,14 +37,11 @@ public class CaracteristicaBean implements Serializable {
         this.caracteristicas = caracteristicaServicio.listar();
     }
 
-    public String IngresarCaracteristica(){
+    public String ingresarCaracteristica(){
         try {
             caracteristicaServicio.agregarCaracteristica(contenido);
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "alerta", "Caracteristica agregada");
-            FacesContext.getCurrentInstance().addMessage("msj-bean", msg);
             return "/administrador/GestionarCaracteristica.xhtml?faces-redirect=true";
         }catch (Exception e){
-            e.printStackTrace();
             e.printStackTrace();
             FacesMessage msg1 = new FacesMessage(FacesMessage.SEVERITY_ERROR, "alerta", e.getMessage());
             FacesContext.getCurrentInstance().addMessage("msj-bean", msg1);
@@ -58,6 +55,8 @@ public class CaracteristicaBean implements Serializable {
             return "/administrador/GestionarCaracteristica.xhtml?faces-redirect=true";
         }catch(Exception e){
             e.printStackTrace();
+            FacesMessage msg1 = new FacesMessage(FacesMessage.SEVERITY_ERROR, "alerta", e.getMessage());
+            FacesContext.getCurrentInstance().addMessage("msj-bean", msg1);
         }
         return null;
     }
@@ -70,7 +69,8 @@ public class CaracteristicaBean implements Serializable {
         try{
             caracteristicas = caracteristicaServicio.buscarCaracteristicasPorContenido(buscar);
         }catch (Exception e){
-            e.printStackTrace();
+            FacesMessage msg1 = new FacesMessage(FacesMessage.SEVERITY_ERROR, "alerta", e.getMessage());
+            FacesContext.getCurrentInstance().addMessage("msj-bean", msg1);
         }
     }
 
