@@ -7,39 +7,34 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <ui:composition template="../WEB-INF/template.xhtml">
-    <ui:define name="title">Registrar Vuelo</ui:define>
+    <ui:define name="title">Actualizar Vuelo</ui:define>
 
     <ui:define name="content">
         <h:form>
-
-            <p:messages id="messages" showDetail="true" closable="true">
-                <p:autoUpdate/>
-            </p:messages>
-
             <h:panelGrid columns="2" cellpadding="5">
 
                 <p:outputLabel value="Cantidad de sillas:" for="cantidad_sillas"/>
-                <p:inputText id="cantidad_sillas" value="#{registrarVueloBean.cantidadSillas}" required="true"/>
+                <p:inputText id="cantidad_sillas" value="#{actualizarVueloBean.cantidadSillas}" required="true"/>
 
                 <p:outputLabel value="Fecha Vuelo:" for="fecha_p"/>
-                <p:datePicker id="fecha_p" value="#{registrarVueloBean.fecha}" required="true"/>
+                <p:datePicker id="fecha_p" value="#{actualizarVueloBean.fecha}" required="true"/>
 
                 <p:outputLabel value="Origen:" for="ciudad_o"/>
-                <p:selectOneMenu id="ciudad_o" value="#{registrarVueloBean.ciudadOrigen}" converter="#{ciudadConverter}" required="true">
+                <p:selectOneMenu id="ciudad_o" value="#{actualizarVueloBean.ciudadOrigen}" converter="#{ciudadConverter}">
                     <f:selectItem itemLabel="Seleccione una ciudad" noSelectionOption="true"/>
-                    <f:selectItems var="caracteristica" itemLabel="#{caracteristica.nombre}"
-                                   value="#{registrarVueloBean.ciudades}"/>
+                    <f:selectItems var="ciudad" itemLabel="#{ciudad.nombre}"
+                                   value="#{actualizarVueloBean.ciudades}"/>
                 </p:selectOneMenu>
 
                 <p:outputLabel value="Destino:" for="ciudad_d"/>
-                <p:selectOneMenu id="ciudad_d" value="#{registrarVueloBean.ciudadDestino}" converter="#{ciudadConverter}" required="true">
+                <p:selectOneMenu id="ciudad_d" value="#{actualizarVueloBean.ciudadDestino}" converter="#{ciudadConverter}">
                     <f:selectItem itemLabel="Seleccione una ciudad" noSelectionOption="true"/>
-                    <f:selectItems var="caracteristica" itemLabel="#{caracteristica.nombre}"
-                                   value="#{registrarVueloBean.ciudades}"/>
+                    <f:selectItems var="ciudad" itemLabel="#{ciudad.nombre}"
+                                   value="#{actualizarVueloBean .ciudades}"/>
                 </p:selectOneMenu>
 
             </h:panelGrid>
-            <p:commandButton value="Registrar Vuelo" action="#{registrarVueloBean.registrarVuelo}" update="@form"/>
+            <p:commandButton value="Actualizar vuelo" action="#{actualizarVueloBean.actualizarVuelo}" update="@form"/>
         </h:form>
     </ui:define>
 </ui:composition>

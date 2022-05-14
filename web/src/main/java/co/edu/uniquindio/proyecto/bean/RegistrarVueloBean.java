@@ -2,7 +2,6 @@ package co.edu.uniquindio.proyecto.bean;
 
 import co.edu.uniquindio.proyecto.Entidades.Ciudad;
 import co.edu.uniquindio.proyecto.Interfaces.CiudadServicio;
-import co.edu.uniquindio.proyecto.Interfaces.ClienteServicio;
 import co.edu.uniquindio.proyecto.Interfaces.VueloServicio;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,7 +20,7 @@ import java.util.List;
 @ViewScoped
 @Getter
 @Setter
-public class VueloBean implements Serializable {
+public class RegistrarVueloBean implements Serializable {
 
     @Autowired
     private VueloServicio vueloServicio;
@@ -44,15 +43,17 @@ public class VueloBean implements Serializable {
         this.ciudades = ciudadServicio.listar();
     }
 
-    public void registrarVuelo(){
+    public String registrarVuelo(){
         try {
             vueloServicio.agregarVuelo(ciudadOrigen,ciudadDestino,cantidadSillas,fecha);
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Alerta", "Registro Exitoso!");
             FacesContext.getCurrentInstance().addMessage("msj-bean", msg);
+            return "/administrador/GestionarVuelo.xhtml?faces-redirect=true";
         }catch (Exception e){
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"alerta", e.getMessage());
             FacesContext.getCurrentInstance().addMessage("msj-bean", msg);
         }
+        return null;
     }
 
 }
