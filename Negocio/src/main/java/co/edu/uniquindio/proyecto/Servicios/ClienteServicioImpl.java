@@ -1,9 +1,9 @@
 package co.edu.uniquindio.proyecto.Servicios;
 
-import co.edu.uniquindio.proyecto.Entidades.Ciudad;
-import co.edu.uniquindio.proyecto.Entidades.Cliente;
-import co.edu.uniquindio.proyecto.Entidades.Reserva;
+import co.edu.uniquindio.proyecto.Entidades.*;
 import co.edu.uniquindio.proyecto.Interfaces.ClienteServicio;
+import co.edu.uniquindio.proyecto.Repositorios.AdministradorHotelRepo;
+import co.edu.uniquindio.proyecto.Repositorios.AdministradorRepo;
 import co.edu.uniquindio.proyecto.Repositorios.ClienteRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
@@ -22,6 +22,13 @@ public class ClienteServicioImpl implements ClienteServicio {
     @Autowired
     private EmailService emailService;
 
+    @Autowired
+    private AdministradorRepo administradorRepo;
+
+    @Autowired
+    private AdministradorHotelRepo administradorHotelRepo;
+
+
     @Override
     public Cliente login(String email, String password) throws Exception {
         return clienteRepo.findByEmailAndPassword(email,password).orElseThrow(() -> new Exception("Se ingresaron los datos incortrectos"));
@@ -31,15 +38,19 @@ public class ClienteServicioImpl implements ClienteServicio {
     public Cliente registrarCliente(String cedula, String nombre, String email, String password, Ciudad ciudad, List<String> telefonos) throws Exception {
 
         Optional<Cliente> buscar = clienteRepo.findById(cedula);
+        Optional<Administrador> buscar2 = administradorRepo.findById(cedula);
+        Optional<AdministradorHotel> buscar3 = administradorHotelRepo.findById(cedula);
 
-        if (buscar.isPresent()){
-            throw new Exception("La cedula del cliente ya existe");
+        if (buscar.isPresent() || buscar2.isPresent() || buscar3.isPresent()){
+            throw new Exception("La cedula ya esta registrada en el sistema");
         }
 
         buscar = clienteRepo.findByEmail(email);
+        buscar2 = administradorRepo.findByEmail(email);
+        buscar3 = administradorHotelRepo.findByEmail(email);
 
-        if (buscar.isPresent()){
-            throw new Exception("el email del cliente ya existe");
+        if (buscar.isPresent() || buscar2.isPresent() || buscar3.isPresent()){
+            throw new Exception("El email ya esta registrado");
         }
 
         Cliente clienteNuevo = new Cliente(cedula,nombre,email,password, telefonos, ciudad);

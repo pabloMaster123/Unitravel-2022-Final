@@ -19,27 +19,27 @@
             <h:panelGrid columns="2" cellpadding="5">
 
                 <p:outputLabel value="Cantidad de sillas:" for="cantidad_sillas"/>
-                <p:inputText id="cantidad_sillas" value="#{registrarVueloBean.cantidadSillas}" required="true"/>
+                <p:inputText id="cantidad_sillas" value="#{gestionarVueloBean.cantidadSillas}" required="true"/>
 
                 <p:outputLabel value="Fecha Vuelo:" for="fecha_p"/>
-                <p:datePicker id="fecha_p" value="#{registrarVueloBean.fecha}" required="true"/>
+                <p:datePicker id="fecha_p" value="#{gestionarVueloBean.fecha}" required="true"/>
 
                 <p:outputLabel value="Origen:" for="ciudad_o"/>
-                <p:selectOneMenu id="ciudad_o" value="#{registrarVueloBean.ciudadOrigen}" converter="#{ciudadConverter}" required="true">
+                <p:selectOneMenu id="ciudad_o" value="#{gestionarVueloBean.ciudadOrigen}" converter="#{ciudadConverter}" required="true">
                     <f:selectItem itemLabel="Seleccione una ciudad" noSelectionOption="true"/>
                     <f:selectItems var="caracteristica" itemLabel="#{caracteristica.nombre}"
-                                   value="#{registrarVueloBean.ciudades}"/>
+                                   value="#{gestionarVueloBean.ciudades}"/>
                 </p:selectOneMenu>
 
                 <p:outputLabel value="Destino:" for="ciudad_d"/>
-                <p:selectOneMenu id="ciudad_d" value="#{registrarVueloBean.ciudadDestino}" converter="#{ciudadConverter}" required="true">
+                <p:selectOneMenu id="ciudad_d" value="#{gestionarVueloBean.ciudadDestino}" converter="#{ciudadConverter}" required="true">
                     <f:selectItem itemLabel="Seleccione una ciudad" noSelectionOption="true"/>
-                    <f:selectItems var="caracteristica" itemLabel="#{caracteristica.nombre}"
-                                   value="#{registrarVueloBean.ciudades}"/>
+                    <f:selectItems var="ciudad" itemLabel="#{ciudad.nombre}"
+                                   value="#{gestionarVueloBean.ciudades}"/>
                 </p:selectOneMenu>
 
             </h:panelGrid>
-            <p:commandButton value="Registrar Vuelo" action="#{registrarVueloBean.registrarVuelo}" update="@form"/>
+            <p:commandButton value="Registrar Vuelo" action="#{gestionarVueloBean.registrarVuelo}" update="@form"/>
         </h:form>
     </ui:define>
 </ui:composition>

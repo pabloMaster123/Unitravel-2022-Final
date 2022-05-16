@@ -30,9 +30,37 @@
             </p:messages>
             <div>
                 <p:panelGrid columns="2" cellpadding="5" id="panelAgregarVuelo">
-                    <p:commandButton value="Agregar Vuelo" action="#{gestionarVueloBean.agregarVuelo}"/>
+                    <p:commandButton value="Agregar Vuelo" onclick="PF('registrar').show()"/>
                 </p:panelGrid>
             </div>
+
+            <p:dialog header="Registro de Vuelo" showEffect="fade" widgetVar="registrar" modal="true" rendered="#{seguridadBean.autenticadoAdmin}">
+                <h:panelGrid columns="2" cellpadding="5">
+
+                    <p:outputLabel value="Cantidad de sillas:" for="cantidad_sillas"/>
+                    <p:inputText id="cantidad_sillas" value="#{gestionarVueloBean.cantidadSillas}"/>
+
+                    <p:outputLabel value="Fecha Vuelo:" for="fecha_p"/>
+                    <p:datePicker id="fecha_p" value="#{gestionarVueloBean.fecha}"/>
+
+                    <p:outputLabel value="Origen:" for="ciudad_o"/>
+                    <p:selectOneMenu id="ciudad_o" value="#{gestionarVueloBean.ciudadOrigen}" converter="#{ciudadConverter}">
+                        <f:selectItem itemLabel="Seleccione una ciudad" noSelectionOption="true"/>
+                        <f:selectItems var="caracteristica" itemLabel="#{caracteristica.nombre}"
+                                       value="#{gestionarVueloBean.ciudades}"/>
+                    </p:selectOneMenu>
+
+                    <p:outputLabel value="Destino:" for="ciudad_d"/>
+                    <p:selectOneMenu id="ciudad_d" value="#{gestionarVueloBean.ciudadDestino}" converter="#{ciudadConverter}">
+                        <f:selectItem itemLabel="Seleccione una ciudad" noSelectionOption="true"/>
+                        <f:selectItems var="ciudad" itemLabel="#{ciudad.nombre}"
+                                       value="#{gestionarVueloBean.ciudades}"/>
+                    </p:selectOneMenu>
+
+                </h:panelGrid>
+                <p:commandButton value="Registrar Vuelo" action="#{gestionarVueloBean.registrarVuelo}" update="@form"/>
+            </p:dialog>
+
             <p:panelGrid columns="2" cellpadding="50" layout="flex">
 
                 <p:outputPanel>

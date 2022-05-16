@@ -30,16 +30,18 @@ public class AdministradorHotelBean implements Serializable {
     private String password;
 
 
-    public void registrarAdministradorHotel(){
+    public String registrarAdministradorHotel(){
         try {
             administradorHotelServicio.agregarAdministradorDeHotel(cedula,nombre,email,password);
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"alerta", "registro exitoso");
             FacesContext.getCurrentInstance().addMessage("msj-bean", msg);
+            return "/administrador/RegistrarAdministradorHotel.xhtml?faces-redirect=true";
         }catch (Exception e){
             e.printStackTrace();
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"alerta", e.getMessage());
             FacesContext.getCurrentInstance().addMessage("msj-bean", msg);
         }
+        return null;
     }
 
 
