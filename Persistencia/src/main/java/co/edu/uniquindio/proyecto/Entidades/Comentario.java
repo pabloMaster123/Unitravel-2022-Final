@@ -33,4 +33,6 @@ public class Comentario implements Serializable {
     @ToString.Exclude
     private Hotel hotel;
 
+    //Falta el cliente
+
 }

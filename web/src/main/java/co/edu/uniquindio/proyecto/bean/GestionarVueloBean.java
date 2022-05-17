@@ -43,10 +43,21 @@ public class GestionarVueloBean implements Serializable {
 
     private LocalDate fecha;
 
+    private Ciudad ciudadOrigenNueva;
+
+    private Ciudad ciudadDestinoNueva;
+
+    private Integer cantidadSillasNueva;
+
+    private LocalDate fechaNueva;
+
+    private Vuelo vueloActualizar;
+
     @PostConstruct
     public void inicializar() {
         this.vuelos = vueloServicio.listar();
         this.ciudades = ciudadServicio.listar();
+        this.vueloActualizar = null;
     }
 
     public String registrarVuelo(){
@@ -88,13 +99,17 @@ public class GestionarVueloBean implements Serializable {
         }
     }
 
-    public String actualizarVuelo(Integer codigoVuelo) {
+    public void definirVueloActualizar(Vuelo vuelo){
+        this.vueloActualizar = vuelo;
+    }
+
+    public String actualizarVuelo(){
         try {
-            return "/administrador/ActualizarVuelo.xhtml?faces-redirect=true&amp;codigo=" + codigoVuelo;
-        } catch (Exception e) {
+            vueloServicio.actualizarVuelo(vueloActualizar.getCodigo(), ciudadOrigenNueva, ciudadDestinoNueva, cantidadSillasNueva, fechaNueva);
+            this.vueloActualizar = null;
+            return "/administrador/GestionarVuelo.xhtml?faces-redirect=true";
+        }catch (Exception e){
             e.printStackTrace();
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"alerta", e.getMessage());
-            FacesContext.getCurrentInstance().addMessage("msj-bean", msg);
         }
         return null;
     }

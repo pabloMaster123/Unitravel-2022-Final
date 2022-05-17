@@ -74,17 +74,12 @@ public class AdministradorHotelServicioImpl implements AdministradorHotelServici
             throw new Exception("El administrador no existe");
         }
 
+        buscar.get().setNombre(nombre);
+        buscar.get().setEmail(email);
+        buscar.get().setPassword(password);
+        buscar.get().setCodigo(codigo);
 
-        AdministradorHotel aux = administradorHotelRepo.getById(cedula);
-
-        aux.setNombre(nombre);
-        aux.setEmail(email);
-        aux.setPassword(password);
-        aux.setCodigo(codigo);
-
-
-
-        return administradorHotelRepo.save(aux);
+        return administradorHotelRepo.save(buscar.get());
     }
 
     @Override

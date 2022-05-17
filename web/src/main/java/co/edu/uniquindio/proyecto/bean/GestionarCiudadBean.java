@@ -12,14 +12,13 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
 @ViewScoped
 @Getter
 @Setter
-public class CiudadBean implements Serializable {
+public class GestionarCiudadBean implements Serializable {
 
     @Autowired
     private CiudadServicio ciudadServicio;
@@ -32,9 +31,14 @@ public class CiudadBean implements Serializable {
 
     private List<Ciudad> buscadas;
 
+    private String nombreNuevo;
+
+    private Ciudad ciudadActualizar;
+
     @PostConstruct
     public void inicializar(){
         this.ciudades = ciudadServicio.listar();
+        ciudadActualizar = null;
     }
 
     public String eliminar(Integer id){
@@ -71,6 +75,23 @@ public class CiudadBean implements Serializable {
             FacesMessage msg1 = new FacesMessage(FacesMessage.SEVERITY_ERROR, "alerta", e.getMessage());
             FacesContext.getCurrentInstance().addMessage("msj-bean", msg1);
         }
+    }
+
+    public void definirCiudadActualizar(Ciudad ciudad){
+        System.out.println(ciudad.getNombre());
+        this.ciudadActualizar = ciudad;
+    }
+
+    public String actualizar(){
+        try{
+            ciudadServicio.actualizarCiudad(ciudadActualizar.getCodigo(), nombreNuevo);
+            ciudadActualizar = null;
+            return "/administrador/GestionarCiudad.xhtml?faces-redirect=true";
+        }catch(Exception e){
+            FacesMessage msg1 = new FacesMessage(FacesMessage.SEVERITY_ERROR, "alerta", e.getMessage());
+            FacesContext.getCurrentInstance().addMessage("msj-bean", msg1);
+        }
+        return null;
     }
 
 }

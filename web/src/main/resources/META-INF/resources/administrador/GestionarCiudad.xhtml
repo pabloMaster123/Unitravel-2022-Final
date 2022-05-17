@@ -30,18 +30,18 @@
             <div>
                 <p:panelGrid columns="2" cellpadding="5" id="panelAgregarCiudad">
                     <p:outputLabel value="Nombre:" for="nombreNuevaCiudad" style="font-weight:bold"/>
-                    <p:inputText id="nombreNuevaCiudad" value="#{ciudadBean.nombre}"/>
+                    <p:inputText id="nombreNuevaCiudad" value="#{gestionarCiudadBean.nombre}"/>
                 </p:panelGrid>
-                <p:commandButton value="Agregar Ciudad" action="#{ciudadBean.agregar()}" update="@form" for="panelAgregarCiudad"/>
+                <p:commandButton value="Agregar Ciudad" action="#{gestionarCiudadBean.agregar()}" update="@form" for="panelAgregarCiudad"/>
             </div>
             <p:panelGrid columns="2" cellpadding="50" layout="flex">
 
                 <p:outputPanel>
                     <div align="right">
                         <p:panelGrid columns="1" cellpadding="5" id="panelBuscar">
-                            <p:inputText id="ciudadParaBuscar" placeholder="Ingrese una ciudad" value="#{ciudadBean.buscar}"/>
+                            <p:inputText id="ciudadParaBuscar" placeholder="Ingrese una ciudad" value="#{gestionarCiudadBean.buscar}"/>
                         </p:panelGrid>
-                        <p:commandButton value="Buscar Ciudad" action="#{ciudadBean.buscarCiudad()}" update="@form" for="panelBuscar"/>
+                        <p:commandButton value="Buscar Ciudad" action="#{gestionarCiudadBean.buscarCiudad()}" update="@form" for="panelBuscar"/>
 
                     </div>
 
@@ -49,7 +49,7 @@
 
                 <p:outputPanel>
 
-                    <p:dataView value="#{ciudadBean.ciudades}" var="ciudad" rows="10" paginator="true" rowsPerPageTemplate="10,15,20">
+                    <p:dataView value="#{gestionarCiudadBean.ciudades}" var="ciudad">
                         <f:facet name="header">
                             Listado de ciudades
                         </f:facet>
@@ -66,12 +66,21 @@
                                 <div class="col-lg-2 col-md-1 align-self-center">
                                     <p:panelGrid columns="2" cellpadding="5">
                                         <p:commandButton value="Eliminar" styleClass="ui-button-raised" iconPos="right"
-                                                         action="#{ciudadBean.eliminar(ciudad.codigo)}"/>
+                                                         action="#{gestionarCiudadBean.eliminar(ciudad.codigo)}"/>
                                         <p:commandButton value="Actualizar" styleClass="ui-button-raised" iconPos="right"
-                                                         action="#{ciudadBean.llevarParaActualizar(ciudad.codigo)}"/>
+                                                         action="#{gestionarCiudadBean.definirCiudadActualizar(ciudad)}" onclick="PF('actualizar').show()"/>
                                     </p:panelGrid>
                                 </div>
+                                <p:dialog header="Actualizacion de Ciudad" showEffect="fade" widgetVar="actualizar" modal="true" rendered="#{seguridadBean.autenticadoAdmin}">
+                                    <h:panelGrid columns="2" cellpadding="5">
+                                        <h:outputLabel value="Nombre Nuevo:" for="nombreNuevo" style="font-weight:bold"/>
+                                        <h:inputText id="nombreNuevo" value="#{gestionarCiudadBean.nombreNuevo}"/>
+                                    </h:panelGrid>
+                                    <p:commandButton value="Actualizar Ciudad"
+                                                     action="#{gestionarCiudadBean.actualizar()}" update="@form"/>
+                                </p:dialog>
                             </div>
+
                         </p:dataViewListItem>
                     </p:dataView>
 

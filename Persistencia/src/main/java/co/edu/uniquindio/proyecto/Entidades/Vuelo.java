@@ -39,7 +39,7 @@ public class Vuelo implements Serializable {
 
     @OneToMany(mappedBy = "vuelo", cascade = CascadeType.ALL)
     @ToString.Exclude
-    private List<Reserva> reservas;
+    private List<Reserva> reservas; //NO VA
 
     @OneToMany(mappedBy = "vuelo", cascade = CascadeType.ALL)
     @ToString.Exclude

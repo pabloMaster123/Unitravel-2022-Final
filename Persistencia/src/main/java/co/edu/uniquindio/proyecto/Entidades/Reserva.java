@@ -23,6 +23,8 @@ public class Reserva implements Serializable {
     @Column(nullable = false)
     private Double costoTotal;
 
+    //fecha de la rserva
+
     @Column(nullable = false)
     private LocalDate fechaInicio;
 
@@ -39,7 +41,7 @@ public class Reserva implements Serializable {
 
     @ManyToOne
     @ToString.Exclude
-    private Vuelo vuelo;
+    private Vuelo vuelo; //no es necesario
 
     @ManyToMany//DUDA CON ESTA RELACION
     @JoinColumn(nullable = false)

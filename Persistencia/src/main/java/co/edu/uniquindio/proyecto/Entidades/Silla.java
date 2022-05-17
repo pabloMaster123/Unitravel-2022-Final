@@ -24,7 +24,7 @@ public class  Silla implements Serializable {
     private Integer numero;
 
     @Column(nullable = false)
-    private boolean disponibilidad;
+    private boolean disponibilidad; //NO
 
     @ManyToOne
     @JoinColumn(nullable = false)

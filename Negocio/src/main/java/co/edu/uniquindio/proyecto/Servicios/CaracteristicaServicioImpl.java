@@ -36,7 +36,7 @@ public class CaracteristicaServicioImpl implements CaracteristicaServicio {
             if(caracteristicaRepo.buscarCarcteristicaPorContenido(contenido.toUpperCase()).isEmpty()) {
                 String aux = contenido.trim();
                 Caracteristica auxCaracteristica = caracteristicaRepo.getById(codigo);
-                auxCaracteristica.setContenido(contenido.trim());
+                auxCaracteristica.setContenido(aux);
                 return caracteristicaRepo.save(auxCaracteristica);
             } else {
                 throw new Exception("Ya existe una caracteristica asi");

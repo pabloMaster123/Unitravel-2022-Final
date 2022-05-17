@@ -87,6 +87,8 @@
                                         <h:panelGrid columns="2" cellpadding="5">
                                             <h:outputText value="Fecha:"/>
                                             <h:outputText value="#{vuelo.fecha}" style="font-weight:bold"/>
+                                            <h:outputText value="Cantidad de Sillas:"/>
+                                            <h:outputText value="#{vuelo.cantidadDeSillas}" style="font-weight:bold"/>
                                             <h:outputText value="Ciudad Origen:"/>
                                             <h:outputText value="#{vuelo.origen.nombre}" style="font-weight:bold"/>
                                             <h:outputText value="Ciudad Destino:"/>
@@ -99,9 +101,35 @@
                                         <p:commandButton value="Eliminar" styleClass="ui-button-raised" iconPos="right"
                                                          action="#{gestionarVueloBean.eliminarVuelo(vuelo.codigo)}"/>
                                         <p:commandButton value="Actualizar" styleClass="ui-button-raised" iconPos="right"
-                                                         action="#{gestionarVueloBean.actualizarVuelo(vuelo.codigo)}"/>
+                                                         action="#{gestionarVueloBean.definirVueloActualizar(vuelo)}" onclick="PF('actualizar').show()"/>
                                     </p:panelGrid>
                                 </div>
+                                <p:dialog header="Actualizacion de Vuelo" showEffect="fade" widgetVar="actualizar" modal="true" rendered="#{seguridadBean.autenticadoAdmin}">
+                                    <h:panelGrid columns="2" cellpadding="5">
+
+                                        <p:outputLabel value="Cantidad de sillas nueva:" for="cantidad_sillas_nueva"/>
+                                        <p:inputText id="cantidad_sillas_nueva" value="#{gestionarVueloBean.cantidadSillasNueva}"/>
+
+                                        <p:outputLabel value="Fecha Vuelo:" for="fecha_p_nueva"/>
+                                        <p:datePicker id="fecha_p_nueva" value="#{gestionarVueloBean.fechaNueva}"/>
+
+                                        <p:outputLabel value="Origen:" for="ciudad_o_nueva"/>
+                                        <p:selectOneMenu id="ciudad_o_nueva" value="#{gestionarVueloBean.ciudadOrigenNueva}" converter="#{ciudadConverter}">
+                                            <f:selectItem itemLabel="Seleccione una ciudad" noSelectionOption="true"/>
+                                            <f:selectItems var="ciudad" itemLabel="#{ciudad.nombre}"
+                                                           value="#{gestionarVueloBean.ciudades}"/>
+                                        </p:selectOneMenu>
+
+                                        <p:outputLabel value="Destino:" for="ciudad_d_nueva"/>
+                                        <p:selectOneMenu id="ciudad_d_nueva" value="#{gestionarVueloBean.ciudadDestinoNueva}" converter="#{ciudadConverter}">
+                                            <f:selectItem itemLabel="Seleccione una ciudad" noSelectionOption="true"/>
+                                            <f:selectItems var="ciudad" itemLabel="#{ciudad.nombre}"
+                                                           value="#{gestionarVueloBean.ciudades}"/>
+                                        </p:selectOneMenu>
+
+                                    </h:panelGrid>
+                                    <p:commandButton value="Actualizar Vuelo" action="#{gestionarVueloBean.actualizarVuelo()}" update="@form"/>
+                                </p:dialog>
                             </div>
                         </p:dataViewListItem>
                     </p:dataView>
