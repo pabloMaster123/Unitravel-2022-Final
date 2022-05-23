@@ -37,4 +37,12 @@ public class  Silla implements Serializable {
     @ManyToMany(mappedBy = "sillas")
     @ToString.Exclude
     private List<Reserva> reservas;
+
+    public Silla(Integer numero,Boolean disponibilidad,Vuelo vuelo,Double valor){
+        this.numero = numero;
+        this.disponibilidad = disponibilidad;
+        this.vuelo = vuelo;
+        this.valor = valor;
+    }
+
 }

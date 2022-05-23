@@ -39,6 +39,10 @@ public class GestionarVueloBean implements Serializable {
 
     private Ciudad ciudadDestino;
 
+    private Ciudad ciudadOrigenBuscar;
+
+    private Ciudad ciudadDestinoBuscar;
+
     private Integer cantidadSillas;
 
     private LocalDate fecha;
@@ -92,6 +96,28 @@ public class GestionarVueloBean implements Serializable {
             vuelos.clear();
             Vuelo vuelo = vueloServicio.buscarVueloPorCodigo(codigoVuelo);
             vuelos.add(vuelo);
+        } catch (Exception e) {
+            e.printStackTrace();
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"alerta", e.getMessage());
+            FacesContext.getCurrentInstance().addMessage("msj-bean", msg);
+        }
+    }
+
+    public void buscarVueloCiuddaOrigen() {
+        try {
+            vuelos.clear();
+            vuelos = vueloServicio.buscarVueloPorOrigen(ciudadOrigenBuscar.getNombre());
+        } catch (Exception e) {
+            e.printStackTrace();
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"alerta", e.getMessage());
+            FacesContext.getCurrentInstance().addMessage("msj-bean", msg);
+        }
+    }
+
+    public void buscarVueloCiudadDestino() {
+        try {
+            vuelos.clear();
+            vuelos = vueloServicio.buscarVueloPorDestino(ciudadDestinoBuscar.getNombre());
         } catch (Exception e) {
             e.printStackTrace();
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"alerta", e.getMessage());

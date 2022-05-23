@@ -34,5 +34,10 @@ public class Comentario implements Serializable {
     private Hotel hotel;
 
     //Falta el cliente
+    public Comentario(Integer calificacion,String comentario,Hotel hotel){
+        this.calificacion = calificacion;
+        this.comentario   = comentario;
+        this.hotel        = hotel;
+    }
 
 }

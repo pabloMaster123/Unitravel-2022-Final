@@ -37,4 +37,9 @@ public class Caracteristica implements Serializable {
     @ToString.Exclude
     private List<Hotel> hoteles;
 
+    public Caracteristica(String contenido){
+        this.contenido = contenido;
+    }
+
+
 }

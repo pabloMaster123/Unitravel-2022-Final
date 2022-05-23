@@ -1,7 +1,6 @@
 package co.edu.uniquindio.proyecto.bean;
 
 import co.edu.uniquindio.proyecto.Entidades.Caracteristica;
-import co.edu.uniquindio.proyecto.Entidades.Ciudad;
 import co.edu.uniquindio.proyecto.Interfaces.CaracteristicaServicio;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,7 +18,7 @@ import java.util.List;
 @ViewScoped
 @Getter
 @Setter
-public class CaracteristicaBean implements Serializable {
+public class GestionarCaracteristicaBean implements Serializable {
 
     @Autowired
     CaracteristicaServicio caracteristicaServicio;
@@ -32,9 +31,14 @@ public class CaracteristicaBean implements Serializable {
 
     private List<Caracteristica> caracteristicas;
 
+    private Caracteristica caracteristica;
+
+    private String caracteristicaActualizada;
+
     @PostConstruct
     public void inicializar(){
         this.caracteristicas = caracteristicaServicio.listar();
+        this.caracteristica = null;
     }
 
     public String ingresarCaracteristica(){
@@ -61,8 +65,18 @@ public class CaracteristicaBean implements Serializable {
         return null;
     }
 
-    public String llevarParaActualizar(Integer caracteristicaCodigo){
-        return "/administrador/ActualizarCaracteristica.xhtml?faces-redirect=true&amp;codigo="+caracteristicaCodigo;
+    public void definirCaracteristicaActualizar(Caracteristica caracteristica){
+        this.caracteristica = caracteristica;
+    }
+
+    public String ActualizarCarateristica() throws Exception {
+        try {
+            caracteristicaServicio.actualizarCaracteristica(caracteristica.getCodigo(), caracteristicaActualizada);
+            return "/administrador/GestionarCaracteristica.xhtml?faces-redirect=true";
+        }catch (Exception e){
+
+        }
+        return null;
     }
 
     public void buscarCaracteristica(){

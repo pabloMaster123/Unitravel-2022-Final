@@ -46,4 +46,8 @@ public class Ciudad implements Serializable {
     @ToString.Exclude
     private List<Cliente> clientes;
 
+    public Ciudad(String nombre){
+        this.nombre = nombre;
+    }
+
 }

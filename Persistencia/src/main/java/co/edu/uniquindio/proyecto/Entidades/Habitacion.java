@@ -46,4 +46,11 @@ public class Habitacion implements Serializable {
     @ManyToMany(mappedBy = "habitaciones", cascade = CascadeType.ALL)
     @ToString.Exclude
     private List<Reserva> reservas;
+
+    public Habitacion(Integer numero,Double precio,Hotel hotel){
+        this.numero = numero;
+        this.precio = precio;
+        this.hotel  =  hotel;
+    }
+
 }
