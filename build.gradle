@@ -33,9 +33,9 @@ subprojects {
     }
 }
 
-test{
+/*test{
     useJUnit()
-}
+}*/
 
 bootJar{
     enabled = false
